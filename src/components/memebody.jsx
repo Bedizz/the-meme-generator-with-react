@@ -1,19 +1,15 @@
-import React,{ useEffect, useState } from 'react'
+import React ,{ useEffect , useState } from 'react'
 
 const memebody = () => {
     //const for each function
     // where we store the meme data
     const [meme, setMeme] = useState([])
-    // where we check if the data is loaded or not
-    const [loading, setLoading] = useState(true)
+    const [memeImage, setMemeImage] = useState({
+      topText: "",
+      bottomText:"",
+      image: "http://i.imgflip.com/1bij.jpg",
+    });
 
-    // where and how we store the inputs
-    const [memeImage, setmemeImage] = useState({
-        topText: "",
-        bottomText: "",
-        image: "http://i.imgflip.com/1bij.jpg",
-      });
-// --------------------------------------------------------------------------------------
     // fetching data from the api
     const getMemeAPI = async () => {
         try {
@@ -41,25 +37,65 @@ const memebody = () => {
     
     // --------------------
     // meme random generator as a function 
-    // --------------------
+  function getMemeImage() {
+    let meme1 = Memes;
+    meme1 = meme1[Math.floor(Math.random() * meme1.length)];
+    meme1 = meme1.url;
+    return meme1;
+    // console.log(results);
+  }
+
+  // --------------------
     // a function to catch the inputs (2 inputs 1 for top text and 1 for bottom text)
     // a function to change the imgs (random meme button)
+
+  function changeMeme(e) {
+    const { name, value } = e.target;
+    setMemeImage((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setMemeImage((prevState) => ({
+      ...prevState,
+      image: getMemeImage(),
+    }));
+  }
+
 
 
 
   return (
-    <form >
-        <div>
-        <div className='input-container'>
-        <p>Top Text<input type="text" className='input-text' name='top-input' placeholder='write your text here..' /></p>
-        <p>Bottom Text<input type="text" className='input-text' ame='bottom-input' placeholder='write your text here..' /></p>
-        </div>
-        <div className='meme-container'>
-            
-        </div>
-        </div>
-    </form>
-  )
+    <main>
+      <form className="form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="form-input"
+          placeholder="Meme top text"
+          name="topText"
+          value={memeImage.topText}
+          onChange={changeMeme}
+        />
+        <input
+          type="text"
+          className="form-input"
+          placeholder="Meme bottom text"
+          name="bottomText"
+          value={memeImage.bottomText}
+          onChange={changeMeme}
+        />
+        <button className="form-button">Generate Meme</button>
+      </form>
+      <div className="meme">
+        <img src={memeImage.image} alt="meme" className="meme--image" />
+        <h1 className="meme--text top">{memeImage.topText}</h1>
+        <h1 className="meme--text bottom">{memeImage.bottomText}</h1>
+      </div>
+    </main>
+  );
 }
 
 export default memebody

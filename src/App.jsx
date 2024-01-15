@@ -1,14 +1,14 @@
-
 import './App.css'
-
-import Memebody from './components/memebody';
+import Memebody from './components/memebody'
 
 function App() {
   return (
     <>
-    <Memebody/>
+      <div>
+        <Memebody />
+      </div>
     </>
-  );
+  )
 }
 
 export default App;

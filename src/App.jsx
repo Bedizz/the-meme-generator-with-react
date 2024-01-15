@@ -1,17 +1,15 @@
 import { useState } from 'react'
-import Memebody from './components/memebody'
 import './App.css'
+import Memebody from "./componenets/memebody"
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import memebody from './components/memebody';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <Memebody />
-      </div>
-    </>
-  )
+    <Router>
+      <Route path="./components/Memebody" component={Memebody}/>
+    </Router>
+  );
 }
 
-export default App
+export default App;

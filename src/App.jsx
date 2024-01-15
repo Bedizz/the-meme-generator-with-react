@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import Memebody from './components/memebody'
+
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import Memebody from './components/memebody';
 
+function App() {
   return (
     <>
-      <div>
-        <Memebody />
-      </div>
+    <Memebody/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

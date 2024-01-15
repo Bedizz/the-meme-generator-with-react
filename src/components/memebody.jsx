@@ -49,8 +49,15 @@ const memebody = () => {
 
   return (
     <form >
+        <div>
+        <div className='input-container'>
         <p>Top Text<input type="text" className='input-text' name='top-input' placeholder='write your text here..' /></p>
         <p>Bottom Text<input type="text" className='input-text' ame='bottom-input' placeholder='write your text here..' /></p>
+        </div>
+        <div className='meme-container'>
+            
+        </div>
+        </div>
     </form>
   )
 }

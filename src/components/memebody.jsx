@@ -12,6 +12,7 @@ const memebody = () => {
     });
 
     // fetching data from the api
+    //
     const getMemeAPI = async () => {
         try {
             setLoading(false) // loading stage

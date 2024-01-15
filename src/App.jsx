@@ -4,7 +4,7 @@ import Memebody from './components/memebody'
 function App() {
   return (
     <>
-      <div>
+      <div className="app-container">
         <Memebody />
       </div>
     </>

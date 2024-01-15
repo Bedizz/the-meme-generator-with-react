@@ -4,6 +4,7 @@ const memebody = () => {
     //const for each function
     // where we store the meme data
     const [meme, setMeme] = useState([])
+    const [loading, setLoading] = useState(true)
     const [memeImage, setMemeImage] = useState({
       topText: "",
       bottomText:"",
@@ -37,13 +38,17 @@ const memebody = () => {
     
     // --------------------
     // meme random generator as a function 
-  function getMemeImage() {
-    let meme1 = Memes;
-    meme1 = meme1[Math.floor(Math.random() * meme1.length)];
-    meme1 = meme1.url;
-    return meme1;
-    // console.log(results);
-  }
+
+
+  // meme random generator as a function 
+    function getMemeImage() {
+        if (meme.length === 0) {
+            return "http://i.imgflip.com/1bij.jpg"; // default image if no memes are loaded
+        }
+
+        let meme1 = meme[Math.floor(Math.random() * meme.length)];
+        return meme1.url;
+    }
 
   // --------------------
     // a function to catch the inputs (2 inputs 1 for top text and 1 for bottom text)
